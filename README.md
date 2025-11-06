@@ -1,56 +1,125 @@
 # LR6
 Лабораторная работа №6
 
-Цель лабораторной работы: изучение базовых возможностей системы управления версиями, опыт работы с Git API, опыт работы с локальным и удалённым репозиторием.
+**Цель лабораторной работы:** изучение базовых возможностей системы управления версиями, опыт работы с Git API, опыт работы с локальным и удалённым репозиторием.
 
-Ход работы:
+## Ход работы:
 
 Переходим по ссылке https://github.com/Kurtyanik/LR6/ В правом верхнем углу страницы нажмите кнопку "Fork". Копируем форк в локальный репозиторий:
-![Git Pull](./screenshots/clone.png)
-Рисунок 1 - git clone
+
+<div align="center">
+<img src="./screenshots/clone.png" width="600">
+<p>Рисунок 1 - git clone</p>
+</div>
 
 Далее добавляем файл через через интерфейс GitHub (название файла - file_s_ud_rep.txt). Потом вытягиваем его в локальный репозиторий:
-![Git Clone](./screenshots/pull.png)
-Рисунок 2 - git clone
+
+<div align="center">
+<img src="./screenshots/pull.png" width="600">
+<p>Рисунок 2 - git pull</p>
+</div>
 
 Создаем новую ветвь:
-![Branch](./screenshots/branch.png)
-Рисунок 3 - branch
+
+<div align="center">
+<img src="./screenshots/branch.png" width="600">
+<p>Рисунок 3 - Создание ветки</p>
+</div>
 
 После создаем файл в ветви, проверяем с помощью git status:
-![Branch File](./screenshots/branch_file.png)
-Рисунок 4 - branch_file
 
-Также сам файл можно проверить с помощью Git Show
-![Branch File](./screenshots/branch_file_check.png)
-Рисунок 5 - проверка branch_file
+<div align="center">
+<img src="./screenshots/branch_file.png" width="600">
+<p>Рисунок 4 - Создание файла в ветке</p>
+</div>
+
+Также сам файл можно проверить с помощью Git Show:
+
+<div align="center">
+<img src="./screenshots/branch_file_check.png" width="600">
+<p>Рисунок 5 - Проверка branch_file</p>
+</div>
 
 Создаем файл с таким же названием в ветви master (для конфликта сияния). Пытаемся сделать merge:
-![Merge](./screenshots/merge_error.png)
-Рисунок 6 - Конфликт слияния
+
+<div align="center">
+<img src="./screenshots/merge_error.png" width="600">
+<p>Рисунок 6 - Конфликт слияния</p>
+</div>
 
 Теперь проверяем с помощью Git Status. На рисунке 7 видно, что конфликт вызван из-за двух одинаковых по названию файлов в разных ветвях:
-![Merge_Status](./screenshots/merge_error_status.png)
-Рисунок 7 - Проверка конфликта
+
+<div align="center">
+<img src="./screenshots/merge_error_status.png" width="600">
+<p>Рисунок 7 - Проверка конфликта</p>
+</div>
 
 Заходим в файл (через блокнот, меняем его содержимое, чтобы разрешить конфликт), делаем commit:
-![Merge_Solution](./screenshots/merge_error_solution.png)
-Рисунок 8 - Разрешение конфликта
 
-Удаляем ненужную ветвь,проверяем:
-![Deleting_Vetochka](./screenshots/deleting_branch.png)
-Рисунок 9 - Удаление ветви
+<div align="center">
+<img src="./screenshots/merge_error_solution.png" width="600">
+<p>Рисунок 8 - Разрешение конфликта</p>
+</div>
+
+Удаляем ненужную ветвь, проверяем:
+
+<div align="center">
+<img src="./screenshots/deleting_branch.png" width="600">
+<p>Рисунок 9 - Удаление ветви</p>
+</div>
 
 Делаем серию коммитов:
-![Many_Commits](./screenshots/many_commits.png)
-Рисунок 10 - Серия коммитов
+
+<div align="center">
+<img src="./screenshots/many_commits.png" width="600">
+<p>Рисунок 10 - Серия коммитов</p>
+</div>
 
 Проверяем результат:
-![Many_Commits_Check_](./screenshots/many_commits_check.png)
-Рисунок 11 - Проверка результата создания коммитов
+
+<div align="center">
+<img src="./screenshots/many_commits_check.png" width="600">
+<p>Рисунок 11 - Проверка результата создания коммитов</p>
+</div>
 
 Удаляем последний коммит с помощью revert:
-![Revert](./screenshots/revert.png)
-Рисунок 11 - результат удаления коммита
 
-Далее создаем папку со скриншотами, работаем над отчетом, делаем коммит
+<div align="center">
+<img src="./screenshots/revert.png" width="600">
+<p>Рисунок 12 - Результат удаления коммита</p>
+</div>
+
+Далее создаем папку со скриншотами, работаем над отчетом, делаем коммит. После получаем историю изменений:
+
+<div align="center">
+<img src="./screenshots/history.png" width="600">
+<p>Рисунок 13 - История операций</p>
+</div>
+
+## Лог команд:
+
+```bash
+# Клонирование
+git clone https://github.com/ZuevPetr/LR6.git
+cd LR6
+
+# Работа с ветками
+git checkout -b vetochka
+git checkout master
+git merge vetochka
+git branch -d vetochka
+
+# Откат коммита
+git reset --soft HEAD~1
+
+# Отчет
+git checkout -b report
+mkdir screenshots
+# ... работа над README.md ...
+git add .
+git commit -m "сообщение"
+git checkout master
+git merge report
+
+# Публикация
+git push origin master
