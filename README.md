@@ -110,7 +110,7 @@ git merge vetochka
 git branch -d vetochka
 
 # Откат коммита
-git reset --soft HEAD~1
+git revert
 
 # Отчет
 git checkout -b report
